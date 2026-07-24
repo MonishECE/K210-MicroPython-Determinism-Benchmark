@@ -47,7 +47,7 @@ This repository contains all raw data, benchmarking scripts, and benchmarking co
 - Dynamic List Creation produced a `MemoryError` when GC was disabled because the unreachable heap objects could not be reclaimed, causing memory exhaustion.
 ## Reproducing the Experiment
 **Prerequisites:** 
-1. Use Yahboom's official setup instructions to install the required software environment for the K210 Developer Kit.
+1. Use Yahboom's official setup instructions to install the required software environment for the K210 Developer Kit (link: https://www.yahboom.net/study/K210-Developer-Kit).
 2. To successfully run scripts, you must have a USB-C cable that can transfer data.
 
 **How to use repository:**
