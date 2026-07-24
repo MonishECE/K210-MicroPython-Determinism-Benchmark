@@ -14,17 +14,17 @@ This repository contains all raw data, benchmarking scripts, and benchmarking co
 ---
 
 ## Hardware and Firmware Used
-Microcontroller: Yahboom K210 Developer Kit (Kendryte K210 64-bit dual-core RISC-V, up to 400 MHz)
-Firmware: CanMV MicroPython (v2.0.6, build dated March 17, 2023)
-IDE: MaixPy IDE
+**Microcontroller:** Yahboom K210 Developer Kit (Kendryte K210 64-bit dual-core RISC-V, up to 400 MHz)
+**Firmware**: CanMV MicroPython (v2.0.6, build dated March 17, 2023)
+**IDE:** MaixPy IDE
 
 
 ## Methodology Summary
-Sample Size: n = 1000 iterations per trial, repeated across 5 separate trials (5,000 execution samples per GC configuration, 10,000 total per algorithm).
-Warm-up: 100 warm-up iterations executed prior to data collection to account for cold-start effects.
-Control: Physical board resets performed between trials to ensure identical starting conditions.
-Timer: MicroPython's `time.ticks_us()` was used for microsecond-level measurements independent from adjustable system clock values.
-Statistical Metrics: Mean, Standard Deviation, Coefficient of Variation (CV), Percentiles (p95, p99), Median Absolute Deviation (MAD) for outlier detection, and Mann-Whitney U tests for distribution comparisons.
+- **Sample Size:** n = 1000 iterations per trial, repeated across 5 separate trials (5,000 execution samples per GC configuration, 10,000 total per algorithm).
+- **Warm-up:** 100 warm-up iterations executed prior to data collection to account for cold-start effects.
+- **Control:** Physical board resets performed between trials to ensure identical starting conditions.
+- **Timer:** MicroPython's `time.ticks_us()` was used for microsecond-level measurements independent from adjustable system clock values.
+- **Statistical Metrics:** Mean, Standard Deviation, Coefficient of Variation (CV), Percentiles (p95, p99), Median Absolute Deviation (MAD) for outlier detection, and Mann-Whitney U tests for distribution comparisons.
 
 ---
 
@@ -46,11 +46,11 @@ Statistical Metrics: Mean, Standard Deviation, Coefficient of Variation (CV), Pe
 - Workload characteristics contributed more to execution-time variability than GC configuration.
 - Dynamic List Creation ran into a `MemoryError` when GC was disabled because the unreachable heap objects couldn't be reclaimed, causing memory exhaustion.
 ## Reproducing the Experiment
-Prerequisites: 
+**Prerequisites:** 
 1. Use Yahboom's official setup instructions to install the required software environment for the K210 Developer Kit.
 2. To successfully run scripts, you must have a USB-C cable that can transfer data
 
-How to use repository:
+**How to use repository:**
 1. Upload the benchmark scripts in scripts/ to the K210 using `MaixPy IDE`.
 2. Run each benchmark under `GC-enabled` and `GC-disabled` configurations.
 3. Export raw timing outputs.
