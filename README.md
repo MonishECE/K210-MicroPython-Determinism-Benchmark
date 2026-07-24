@@ -14,9 +14,9 @@ This repository contains all raw data, benchmarking scripts, and benchmarking co
 ---
 
 ## Hardware and Firmware Used
-**Microcontroller:** Yahboom K210 Developer Kit (Kendryte K210 64-bit dual-core RISC-V, up to 400 MHz)
-**Firmware**: CanMV MicroPython (v2.0.6, build dated March 17, 2023)
-**IDE:** MaixPy IDE
+- **Microcontroller:** Yahboom K210 Developer Kit (Kendryte K210 64-bit dual-core RISC-V, up to 400 MHz)
+- **Firmware**: CanMV MicroPython (v2.0.6, build dated March 17, 2023)
+- **IDE:** MaixPy IDE
 
 
 ## Methodology Summary
@@ -44,14 +44,14 @@ This repository contains all raw data, benchmarking scripts, and benchmarking co
 - GC configuration produced statistically significant differences in 5/6 workloads.
 - Effect sizes were negligible to small (rank-biserial correlation: -0.062 to 0.139).
 - Workload characteristics contributed more to execution-time variability than GC configuration.
-- Dynamic List Creation ran into a `MemoryError` when GC was disabled because the unreachable heap objects couldn't be reclaimed, causing memory exhaustion.
+- Dynamic List Creation produced a `MemoryError` when GC was disabled because the unreachable heap objects could not be reclaimed, causing memory exhaustion.
 ## Reproducing the Experiment
 **Prerequisites:** 
 1. Use Yahboom's official setup instructions to install the required software environment for the K210 Developer Kit.
-2. To successfully run scripts, you must have a USB-C cable that can transfer data
+2. To successfully run scripts, you must have a USB-C cable that can transfer data.
 
 **How to use repository:**
-1. Upload the benchmark scripts in scripts/ to the K210 using `MaixPy IDE`.
+1. Upload the benchmark scripts in `scripts/` to the K210 using `MaixPy IDE`.
 2. Run each benchmark under `GC-enabled` and `GC-disabled` configurations.
 3. Export raw timing outputs.
 4. Use the analysis scripts to generate statistics and figures.
