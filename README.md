@@ -20,16 +20,39 @@ IDE: MaixPy IDE
 
 
 ## Methodology Summary
-Sample Size: n = 1000 iterations per trial, repeated across 5 seperate trials (5,000 execution samples per GC configuration, 10,000 total per algorithm).
+Sample Size: n = 1000 iterations per trial, repeated across 5 separate trials (5,000 execution samples per GC configuration, 10,000 total per algorithm).
 Warm-up: 100 warm-up iterations executed prior to data collection to account for cold-start effects.
 Control: Physical board resets performed between trials to ensure identical starting conditions.
-Timer: MicroPython's time.ticks_us() was used for microsecond-level tracking independent from adjustable, system clock values.
+Timer: MicroPython's time.ticks_us() was used for microsecond-level measuremnts independent from adjustable system clock values.
 Statistical Metrics: Mean, Standard Deviation, Coefficient of Variation (CV), Percentiles (p95, p99), Median Absolute Deviation (MAD) for outlier detection, and Mann-Whitney U tests for distribution comparisons.
 
 ---
 
 ## Repository Structure
-├── scripts/              # MicroPython benchmarking scripts for the K210, and scripts used for figure/table generation
-├── data/                 # Raw timing outputs from benchmarking script
-├── figures/              # All figures and tables from the technical note
+```text
+Repository Structure
+
+├── scripts/
+│   ├── MicroPython benchmarking scripts
+│   └── figure/table generation scripts
+├── data/
+│   └── Raw timing outputs
+├── figures/
+│   └── Figures and tables from the technical note
 └── README.md
+```
+## Key Findings
+- GC configuration produced statistically significant differences in 5/6 workloads.
+- Effect sizes were negligible to small (rank-biserial correlation: -0.062 to 0.139).
+- Workload characteristics contributed more to execution-time variability than GC configuration.
+- Dynamic List Creation ran into a MemoryError when GC was disabled due to the unreachable heap objects couldn't be reclaimed, causing memory exhaustion.
+## Reproducing the Experiment
+Prerequisites: 
+1. Use Yahboom's repository for the K210 Developer kit to install necessary software for the K210 Developer kit. (link: https://www.yahboom.net/study/K210-Developer-Kit)
+2. To successfully run scripts, you must have an USB-C cable that can transfer data
+
+How to use repository:
+1. Upload the benchmark scripts in scripts/ to the K210 using MaixPy IDE.
+2. Run each benchmark under GC-enabled and GC-disabled configurations.
+3. Export raw timing outputs.
+4. Use the analysis scripts to generate statistics and figures.
